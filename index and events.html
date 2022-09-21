@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+     <header><h1>Header</h1></header>
+     <div class="list-blog">
+        <p>123456789</p>
+        <div id="app">
+            <p>{{ title }}</p>
+            <h2>{{say('World')}}</h2>
+                <a v-bind:href="url" v-bind:target="target" >Youtube</a>
+            <!-- Cú pháp kết nối dữ liệu vue vào html -->
+            <h3>{{check ? 'Correct' : 'False'}}</h3>
+            <h3>{{  formatPrice() }}</h3>
+        </div>
+     </div>
+
+     <div id="count">
+          <h3>Count: {{counter}}</h3>
+          <button v-on:click="handleClick(5, $event)">Click me</button>
+          <div class="box" v-on:mousemove="handleMouseMove">
+                      <p>ClientX: {{ clientX }}</p>
+                      <p>ClientY: {{ clientY }}</p>
+          </div>
+          <form action="" v-on:submit=" handleSubmitForm">
+            <label>Input Name</label>
+                 <input type="text" name="firstName"><br>
+                 <label>Input email</label>
+                 <input type="email" name="email" ><br>
+                 <input type="submit" value="Login">
+          </form>
+     </div>
+</body>
+<script>
+     var count = new Vue({
+        el: '#count',
+        data:{
+            counter: 0,
+            clientX: 0,
+            clientY: 0
+
+        },
+        methods:{
+            handleClick(number, event){
+                // console.log('click', this);
+                // this.counter += 1;
+                this.counter += number;
+            },
+            handleMouseMove(e){
+                console.log(e);
+                this.clientX = e.clientX;
+                this.clientY = e.clientY;
+            },
+            handleSubmitForm(e){
+                console.log(e);
+            }
+        }
+     })
+</script>
+<script src="main.js"></script>
+</html>

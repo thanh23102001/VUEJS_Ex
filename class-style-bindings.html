@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id ="app">
+        <h1>FirstName = {{name}}</h1>
+        <input v-on:keyup="handleKeyUp" type="text" placeholder="Input name">
+        <input v-model="name" type="text" placeholder="Input name">
+        <button v-on:click="changeActive">Change Active</button>
+        <div class="demo" v-bind:class="objClass"></div>
+
+        <div v-bind:style="{color: activeColor, fontSize: fontSize + 'px' }">
+            Test Style Bindings 
+        </div>
+
+        <!-- <div v-bind:style="{backgroundImage: 'url('+ bg +')'} ">
+            hi
+        </div> -->
+        <!-- <div v-bind:style="{backgroundImage: background} ">
+            hi
+        </div> -->
+        <div v-bind:style="objectStyle">
+            hi
+        </div>
+    </div>
+</body>
+<script>
+    var app = new Vue (
+    {
+        el: '#app',
+        data:{
+         name: 'Hi',
+         isActive: true,
+         isError: false,
+
+         activeColor:'blue',
+         fontSize:20,
+         bg:'https://images.unsplash.com/photo-1589519160732-57fc498494f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d29ybGR8ZW58MHx8MHx8&w=1000&q=80'
+        },
+        methods:{
+             handleKeyUp(e){
+                this.name = e.target.value;
+             }
+        },
+        computed:{
+            objClass: function(){
+                return{
+                    active: this.isActive, 
+                    error: this.isError
+                }
+            },
+            background(){
+                return 'url(' + this.bg + ')';
+            },
+            objectStyle: function(){
+                return{
+                backgroundImage: 'url(' + this.bg + ')',
+                margin:'10px',
+                paddingLeft:'40px'
+                }
+            }
+        }
+    }
+);
+</script>
+</html>

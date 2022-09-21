@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Computed</title>
+</head>
+<body>
+    <div id = "app">
+             <h1>{{reversedMessage}}</h1>
+             <br>
+             <button v-on:click="a++">A = A + 1</button>
+             <button v-on:click="b++">B = B + 1</button>
+             <p>Number + A = {{addA}}</p>
+             <p>Number + B = {{addB}}</p>
+    </div>
+    <script>
+           var app = new Vue (
+    {
+        el: '#app',
+        data:{
+         message: 'Hello world',
+         a: 0,
+         b: 0,
+         number: 20
+        },
+        computed:{
+            reversedMessage: function(){
+                return this.message.split('').reverse().join('')
+            },
+            addA(){
+                return this.a + this.number
+            },
+            addB(){
+                return this.b + this.number
+            }
+        }
+    })
+    </script>
+</body>
+</html>
