@@ -72,7 +72,7 @@ a {
 </style>
 -->
 <template>
-  <center id="app">
+  <!-- <center id="app">
     <h1 style="color: green">GeeksforGeeks</h1>
     <h2><u>To Do List</u></h2>
     <Task task="Run a mile" index="0" />
@@ -89,4 +89,34 @@ a {
     name: "App",
     components: { Task },
   };
+</script> -->
+<div id="app">
+    <div class="nav-bar">
+        <li class="nav-item">
+      <router-link class="nav-link" to="/blog">Blog</router-link>
+    </li>
+    <li class="nav-item">
+      <router-link class="nav-link" to="/services">Services</router-link>
+    </li>
+    <li class="nav-item">
+       <router-link class="nav-link" to="/contact">contact</router-link>
+    </li>
+    </div>
+    <router-view/>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
 </script>
+
+<style>
+.nav-bar {
+  display: flex;
+}
+.nav-bar span {
+  margin-right: 5px;
+}
+</style>
